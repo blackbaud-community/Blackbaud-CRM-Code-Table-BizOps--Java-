@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="blackbaud_appfx_server_bizops" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="blackbaud_appfx_server_bizops" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Services for the code table 'ADDRESSTYPECODE'</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="blackbaud_appfx_server_bizops">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="AddTableEntryRequest" type="tns:AddTableEntryRequest" />
+      <s:complexType name="AddTableEntryRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TableEntryDescription" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TableEntryID" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="Inactive" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BizOpsRequest" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionKey" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddTableEntryReply" type="tns:AddTableEntryReply" />
+      <s:complexType name="AddTableEntryReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TableEntryID" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BizOpsReply" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StatusOK" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDetail" type="tns:BizOpsErrorDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BizOpsErrorDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceErrorCode" type="tns:ServiceErrorCode" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceErrorCodeNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDetails" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataFormErrorCode" type="tns:DataFormErrorCode" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataFormErrorCodeNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataFormErrorInvalidFieldID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataFormErrorInvalidFieldReason" nillable="true" type="tns:DataFormInvalidFieldReason" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataFormErrorInvalidFieldCollectionFieldID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="SQLErrorNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SQLErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="SQLErrorSeverity" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="SQLErrorState" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SQLErrorProcedure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" default="0" name="SQLErrorLineNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="SQLErrorIsConcurrency" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ServiceErrorCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="GeneralError" />
+          <s:enumeration value="AccessDenied" />
+          <s:enumeration value="InvalidAppDatabaseName" />
+          <s:enumeration value="InvalidRequest" />
+          <s:enumeration value="BadWebConfig" />
+          <s:enumeration value="DbTransactionOutOfSync" />
+          <s:enumeration value="DbConnectionError" />
+          <s:enumeration value="DataFormError" />
+          <s:enumeration value="BadMetaData" />
+          <s:enumeration value="ServiceExecutionError" />
+          <s:enumeration value="BusinessProcessError" />
+          <s:enumeration value="InvalidAPIUse" />
+          <s:enumeration value="DatabaseRevisionMismatch" />
+          <s:enumeration value="InvalidSiteInfoID" />
+          <s:enumeration value="InvalidProductIsHash" />
+          <s:enumeration value="ProductListNotLoaded" />
+          <s:enumeration value="TimeoutError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DataFormErrorCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="GeneralError" />
+          <s:enumeration value="InvalidFieldID" />
+          <s:enumeration value="InsufficientFields" />
+          <s:enumeration value="InvalidFieldValue" />
+          <s:enumeration value="ConcurrencyViolation" />
+          <s:enumeration value="RecordNotFound" />
+          <s:enumeration value="BBPSGatewayProcessingFailure" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DataFormInvalidFieldReason">
+        <s:restriction base="s:string">
+          <s:enumeration value="RequiredFldMissing" />
+          <s:enumeration value="DataTooLong" />
+          <s:enumeration value="InvalidDataFormat" />
+          <s:enumeration value="ValueGreaterThanMax" />
+          <s:enumeration value="ValueLessThanMin" />
+          <s:enumeration value="DataNotUnique" />
+          <s:enumeration value="InvalidCodeTableEntry" />
+          <s:enumeration value="DBForeignKeyFailure" />
+          <s:enumeration value="DBConstraintFailure" />
+          <s:enumeration value="CustomException" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="UpdateTableEntryRequest" type="tns:UpdateTableEntryRequest" />
+      <s:complexType name="UpdateTableEntryRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TableEntryDescription" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TableEntryID" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="Inactive" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="UpdateTableEntryReply" type="tns:UpdateTableEntryReply" />
+      <s:complexType name="UpdateTableEntryReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeleteTableEntryRequest" type="tns:DeleteTableEntryRequest" />
+      <s:complexType name="DeleteTableEntryRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TableEntryID" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeleteTableEntryReply" type="tns:DeleteTableEntryReply" />
+      <s:complexType name="DeleteTableEntryReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryDataRequest" type="tns:GetTableEntryDataRequest" />
+      <s:complexType name="GetTableEntryDataRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TableEntryID" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryDataReply" type="tns:GetTableEntryDataReply" />
+      <s:complexType name="GetTableEntryDataReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TableEntryID" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="TableEntryDescription" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Inactive" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryIDEzRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableEntryDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTableEntryIDEzEzReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTableEntryIDReply" type="tns:GetTableEntryIDReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetTableEntryIDReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TableEntryID" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryIDRequest" type="tns:GetTableEntryIDRequest" />
+      <s:complexType name="GetTableEntryIDRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TableEntryDescription" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryIDReply" type="tns:GetTableEntryIDReply" />
+      <s:element name="GetTableEntryDescriptionRequest" type="tns:GetTableEntryDescriptionRequest" />
+      <s:complexType name="GetTableEntryDescriptionRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TableEntryID" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryDescriptionReply" type="tns:GetTableEntryDescriptionReply" />
+      <s:complexType name="GetTableEntryDescriptionReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TableEntryDescription" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryDescriptionEzRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tableEntryID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTableEntryDescriptionEzReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTableEntryDescriptionReply" type="tns:GetTableEntryDescriptionReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTableEntryListRequest" type="tns:GetTableEntryListRequest" />
+      <s:complexType name="GetTableEntryListRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IncludeInactive" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="RefreshCache" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryListReply" type="tns:GetTableEntryListReply" />
+      <s:complexType name="GetTableEntryListReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Rows" type="tns:ArrayOfTableEntryListRow" />
+              <s:element minOccurs="0" maxOccurs="1" default="false" name="UserDefinedSort" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTableEntryListRow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TableEntryListRow" nillable="true" type="tns:TableEntryListRow" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TableEntryListRow">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTableEntryListEzRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="includeInactive" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTableEntryListEzReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTableEntryListReply" type="tns:GetTableEntryListReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTableEntryLookupInfoRequest" type="tns:GetTableEntryLookupInfoRequest" />
+      <s:complexType name="GetTableEntryLookupInfoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" default="true" name="ReturnEntryList" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTableEntryLookupInfoReply" type="tns:GetTableEntryLookupInfoReply" />
+      <s:complexType name="GetTableEntryLookupInfoReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentUserCanAdd" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentUserCanUpdate" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentUserCanDelete" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Entries" type="tns:GetTableEntryListReply" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SessionEndRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SessionKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SessionStartRequest">
+        <s:complexType />
+      </s:element>
+      <s:element name="SessionStartReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BizOpsSessionStartReply" type="tns:BizOpsSessionStartReply" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BizOpsSessionStartReply">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BizOpsReply">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SessionKey" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PingRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pingMessageIn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PingReply">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pingMessageOut" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddTableEntrySoapIn">
+    <wsdl:part name="request" element="tns:AddTableEntryRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddTableEntrySoapOut">
+    <wsdl:part name="AddTableEntryResult" element="tns:AddTableEntryReply" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTableEntrySoapIn">
+    <wsdl:part name="request" element="tns:UpdateTableEntryRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTableEntrySoapOut">
+    <wsdl:part name="UpdateTableEntryResult" element="tns:UpdateTableEntryReply" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTableEntrySoapIn">
+    <wsdl:part name="request" element="tns:DeleteTableEntryRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTableEntrySoapOut">
+    <wsdl:part name="DeleteTableEntryResult" element="tns:DeleteTableEntryReply" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryDataSoapIn">
+    <wsdl:part name="request" element="tns:GetTableEntryDataRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryDataSoapOut">
+    <wsdl:part name="GetTableEntryDataResult" element="tns:GetTableEntryDataReply" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryIDEzSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTableEntryIDEzRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryIDEzSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTableEntryIDEzEzReply" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryIDSoapIn">
+    <wsdl:part name="request" element="tns:GetTableEntryIDRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryIDSoapOut">
+    <wsdl:part name="GetTableEntryIDResult" element="tns:GetTableEntryIDReply" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryDescriptionSoapIn">
+    <wsdl:part name="request" element="tns:GetTableEntryDescriptionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryDescriptionSoapOut">
+    <wsdl:part name="GetTableEntryDescriptionResult" element="tns:GetTableEntryDescriptionReply" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryDescriptionEzSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTableEntryDescriptionEzRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryDescriptionEzSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTableEntryDescriptionEzReply" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryListSoapIn">
+    <wsdl:part name="request" element="tns:GetTableEntryListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryListSoapOut">
+    <wsdl:part name="GetTableEntryListResult" element="tns:GetTableEntryListReply" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryListEzSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTableEntryListEzRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryListEzSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTableEntryListEzReply" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryLookupInfoSoapIn">
+    <wsdl:part name="request" element="tns:GetTableEntryLookupInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTableEntryLookupInfoSoapOut">
+    <wsdl:part name="GetTableEntryLookupInfoResult" element="tns:GetTableEntryLookupInfoReply" />
+  </wsdl:message>
+  <wsdl:message name="SessionEndSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionEndRequest" />
+  </wsdl:message>
+  <wsdl:message name="SessionStartSoapIn">
+    <wsdl:part name="parameters" element="tns:SessionStartRequest" />
+  </wsdl:message>
+  <wsdl:message name="SessionStartSoapOut">
+    <wsdl:part name="parameters" element="tns:SessionStartReply" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:PingRequest" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingReply" />
+  </wsdl:message>
+  <wsdl:portType name="CodeTableServiceSoap">
+    <wsdl:operation name="AddTableEntry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds a new table entry to the Code table.</wsdl:documentation>
+      <wsdl:input message="tns:AddTableEntrySoapIn" />
+      <wsdl:output message="tns:AddTableEntrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTableEntry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates an existing table entry description in the Code table.</wsdl:documentation>
+      <wsdl:input message="tns:UpdateTableEntrySoapIn" />
+      <wsdl:output message="tns:UpdateTableEntrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTableEntry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Deletes an existing table entry description in the Code table.</wsdl:documentation>
+      <wsdl:input message="tns:DeleteTableEntrySoapIn" />
+      <wsdl:output message="tns:DeleteTableEntrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the data from the TableEntry row.</wsdl:documentation>
+      <wsdl:input message="tns:GetTableEntryDataSoapIn" />
+      <wsdl:output message="tns:GetTableEntryDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryIDEz">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the ID for the Table Entry from the description.</wsdl:documentation>
+      <wsdl:input message="tns:GetTableEntryIDEzSoapIn" />
+      <wsdl:output message="tns:GetTableEntryIDEzSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the ID for the Table Entry from the description.</wsdl:documentation>
+      <wsdl:input message="tns:GetTableEntryIDSoapIn" />
+      <wsdl:output message="tns:GetTableEntryIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryDescription">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the description for the TableEntry given the entry ID.</wsdl:documentation>
+      <wsdl:input message="tns:GetTableEntryDescriptionSoapIn" />
+      <wsdl:output message="tns:GetTableEntryDescriptionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryDescriptionEz">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the description for the TableEntry given the entry ID.</wsdl:documentation>
+      <wsdl:input message="tns:GetTableEntryDescriptionEzSoapIn" />
+      <wsdl:output message="tns:GetTableEntryDescriptionEzSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the list of entries in the code table.</wsdl:documentation>
+      <wsdl:input message="tns:GetTableEntryListSoapIn" />
+      <wsdl:output message="tns:GetTableEntryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryListEz">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the list of entries in the code table.</wsdl:documentation>
+      <wsdl:input message="tns:GetTableEntryListEzSoapIn" />
+      <wsdl:output message="tns:GetTableEntryListEzSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryLookupInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets the information needed to present the user a lookup dialog for tableentries.</wsdl:documentation>
+      <wsdl:input message="tns:GetTableEntryLookupInfoSoapIn" />
+      <wsdl:output message="tns:GetTableEntryLookupInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SessionEnd">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Notifies the server that any data cached for this session can be discarded.</wsdl:documentation>
+      <wsdl:input message="tns:SessionEndSoapIn" />
+    </wsdl:operation>
+    <wsdl:operation name="SessionStart">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Starts a session and returns a key that can be used as a cookie to optimize subsequent requests.</wsdl:documentation>
+      <wsdl:input message="tns:SessionStartSoapIn" />
+      <wsdl:output message="tns:SessionStartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used to verify connectivity to the service.</wsdl:documentation>
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CodeTableServiceSoap" type="tns:CodeTableServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTableEntry">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/AddTableEntry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTableEntry">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/UpdateTableEntry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTableEntry">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/DeleteTableEntry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryData">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryIDEz">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryIDEz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryID">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryDescription">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryDescriptionEz">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryDescriptionEz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryList">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryListEz">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryListEz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryLookupInfo">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryLookupInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionEnd">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/SessionEnd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SessionStart">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/SessionStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="blackbaud_appfx_server_bizops/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CodeTableServiceSoap12" type="tns:CodeTableServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTableEntry">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/AddTableEntry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTableEntry">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/UpdateTableEntry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTableEntry">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/DeleteTableEntry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryData">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryIDEz">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryIDEz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryID">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryDescription">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryDescription" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryDescriptionEz">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryDescriptionEz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryList">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryListEz">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryListEz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableEntryLookupInfo">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/GetTableEntryLookupInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SessionEnd">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/SessionEnd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SessionStart">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/SessionStart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="blackbaud_appfx_server_bizops/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CodeTableService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Services for the code table 'ADDRESSTYPECODE'</wsdl:documentation>
+    <wsdl:port name="CodeTableServiceSoap" binding="tns:CodeTableServiceSoap">
+      <soap:address location="http://localhost/bbAppFx/vpp/bizops/db%5BBBINFINITY%5D/codetables/ADDRESSTYPECODE/soap.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CodeTableServiceSoap12" binding="tns:CodeTableServiceSoap12">
+      <soap12:address location="http://localhost/bbAppFx/vpp/bizops/db%5BBBINFINITY%5D/codetables/ADDRESSTYPECODE/soap.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

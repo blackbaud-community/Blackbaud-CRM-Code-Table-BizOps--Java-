@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='CodeTableExampleJavaBizOps' version='1.0'>
+	<schema type='-wsdl' package='addresstypecode' name='addresstypecode'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='xml-resources/jaxb/addresstypecode/localhost/bbAppFx/vpp/bizops/db_BBINFINITY_/codetables/ADDRESSTYPECODE/soap.asmx.wsdl' origLocation='http://localhost/bbAppFx/vpp/bizops/db%5BBBINFINITY%5D/codetables/ADDRESSTYPECODE/soap.asmx?WSDL' origLocationType='url'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+</schemas>

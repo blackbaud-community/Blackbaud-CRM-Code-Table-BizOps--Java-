@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/TomTr/Desktop/appfxwebservice.asmx.wsdl" uri="xml-resources/web-service-references/appfxwebservice.asmx/wsdl/appfxwebservice.asmx.wsdl"/>
+    <system systemId="http://localhost/bbAppFx/vpp/bizops/db%5BBBINFINITY%5D/codetables/ADDRESSTYPECODE/soap.asmx?WSDL" uri="xml-resources/jaxb/addresstypecode/localhost/bbAppFx/vpp/bizops/db_BBINFINITY_/codetables/ADDRESSTYPECODE/soap.asmx.wsdl"/>
+    <system systemId="file:/C:/Users/TomTr/Documents/NetBeansProjects/CodeTableExampleJavaBizOps/xml-resources/jaxb/addresstypecode/localhost/bbAppFx/vpp/bizops/db_BBINFINITY_/codetables/ADDRESSTYPECODE/soap.asmx.wsdl" uri="wsdl/soap.asmx.wsdl"/>
+</catalog>
