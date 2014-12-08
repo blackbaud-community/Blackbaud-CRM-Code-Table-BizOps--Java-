@@ -3,8 +3,7 @@ Blackbaud-CRM-Code-Table-BizOps--Java-
 
 ## What You Will Build ##
 
-This customization demonstrates how to address code tables through Business Operations Services (BizOps), which is a wrapper API for AppFxWebService targeted to all developers.
-BizOps are strongly typed SOAP web services, and you can use them to access Infinity features by adding a reference to the ASMX and beginning to code.
+This customization demonstrates how to address code tables through Business Operations Services (BizOps), which is a wrapper API for AppFxWebService targeted to all developers. BizOps are strongly typed SOAP web services, and you can use them to access Infinity features by adding a reference to the ASMX and beginning to code.
 
 ##Resources##
 * See the [Blackbaud CRM Read Me](https://github.com/blackbaud-community/Blackbaud-CRM/blob/master/README.md). 
