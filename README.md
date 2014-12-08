@@ -8,7 +8,7 @@ BizOps are strongly typed SOAP web services, and you can use them to access Infi
 
 ##Resources##
 * See the [Blackbaud CRM Read Me](https://github.com/blackbaud-community/Blackbaud-CRM/blob/master/README.md). 
-* [Step by Step Instructions]((https://www.blackbaud.com/files/support/guides/infinitydevguide/Subsystems/inwebapi-developer-help/Content/InfinityWebAPI/coCodeTableExampleBizOps.htm) for the code table example
+* [Step by Step Instructions](https://www.blackbaud.com/files/support/guides/infinitydevguide/Subsystems/inwebapi-developer-help/Content/InfinityWebAPI/coCodeTableExampleBizOps.htm) for the code table example
 * [Infinity Web API](https://www.blackbaud.com/files/support/guides/infinitydevguide/infsdk-developer-help.htm#../Subsystems/inwebapi-developer-help/Content/InfinityWebAPI/WelcomeInfinityWebAPI.htm) Chapter within Developer Guides
 
 ##Contributing##
